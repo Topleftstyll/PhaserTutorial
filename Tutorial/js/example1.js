@@ -1,6 +1,6 @@
 class example1 extends Phaser.Scene {
 	constructor() {
-		super({key:"example1"});
+		super({ key:"example1" });
 	}
 
 	preload() {
@@ -9,7 +9,6 @@ class example1 extends Phaser.Scene {
 
 	create() {
 		this.image = this.add.image(400, 300, 'GFS');
-
 		// this.input.keyboard.on('keyup_D', function(event) {
 		// 	this.image.x += 10;
 		// }, this);
@@ -27,6 +26,16 @@ class example1 extends Phaser.Scene {
 		this.input.keyboard.on('keyup_P', function(event) {
 			var physicsImage = this.physics.add.image(this.image.x, this.image.y, "GFS");
 			physicsImage.setVelocity(Phaser.Math.RND.integerInRange(-100, 100), -300);
+		}, this);
+
+		this.input.keyboard.on('keyup', function(e) {
+			if(e.key == "2") {
+				this.scene.start("example2");
+			}
+
+			if(e.key == "3") {
+				this.scene.start("example3");
+			}
 		}, this);
 	}
 
